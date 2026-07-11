@@ -1,6 +1,7 @@
 import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -89,7 +90,7 @@ export default function Home() {
       <main className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20">
         <Hero />
         <Experience />
-        {/* <Projects /> */}
+        <Skills />
         {/* <Skills /> */}
         {/* <Contact /> */}
       </main>
