@@ -11,8 +11,8 @@ import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
   return (
-    <nav className="fixed left-1/2 top-6 z-50 -translate-x-1/2">
-      <div className="flex items-center gap-7 rounded-full border border-neutral-300 bg-white/80 px-7 py-3 shadow-xl backdrop-blur-xl dark:border-neutral-700 dark:bg-neutral-900/80">
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div className="flex items-center gap-8 rounded-full border border-zinc-200/30 bg-white/60 px-8 py-4 backdrop-blur-xl shadow-xl dark:bg-zinc-900/60 dark:border-zinc-700/30">
         <NavItem href="/">
           <Home size={22} />
         </NavItem>
