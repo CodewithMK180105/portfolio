@@ -1,4 +1,5 @@
 import Experience from "@/components/Experience";
+import Hackathons from "@/components/Hackathons";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Skills from "@/components/Skills";
@@ -91,6 +92,7 @@ export default function Home() {
         <Hero />
         <Experience />
         <Skills />
+        <Hackathons />
         {/* <Skills /> */}
         {/* <Contact /> */}
       </main>
