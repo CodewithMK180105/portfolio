@@ -1,7 +1,7 @@
 import Experience from "@/components/Experience";
 import Hackathons from "@/components/Hackathons";
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import Skills from "@/components/Skills";
 
 export default function Home() {
