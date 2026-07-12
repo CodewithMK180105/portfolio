@@ -73,7 +73,7 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section className="mt-28 pb-20">
+    <section className="mt-16 pb-20">
       <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
         Technical Skills
       </span>

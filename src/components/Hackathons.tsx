@@ -80,7 +80,7 @@ const hackathons = [
 
 export default function Hackathons() {
   return (
-    <section className="mt-8 pb-20">
+    <section className="mt-8 pb-8">
       <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
         Hackathons
       </span>

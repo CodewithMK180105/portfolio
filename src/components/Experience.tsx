@@ -65,7 +65,7 @@ export default function Experience() {
 ];
 
   return (
-    <section className="pb-12">
+    <section className="">
       <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
         Work Experience
       </span>
