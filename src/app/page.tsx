@@ -1,3 +1,4 @@
+import ContactSection from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Hackathons from "@/components/Hackathons";
 import Hero from "@/components/Hero";
@@ -95,7 +96,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <Hackathons />
-        {/* <Contact /> */}
+        <ContactSection />
       </main>
     </div>
   );
