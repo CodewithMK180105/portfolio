@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Download, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="mx-auto px-6 pt-12 pb-16">
+    <section className="mx-auto px-6 pt-12 pb-16" id="home">
 
       {/* HERO */}
       <div className="flex flex-col-reverse items-center justify-between gap-14 lg:flex-row">
@@ -26,15 +27,17 @@ export default function Hero() {
 
           <div className="mt-5 flex flex-wrap gap-5">
 
-            <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-7 py-3 text-white shadow-lg transition duration-300 hover:scale-105">
+            {/* <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-7 py-3 text-white shadow-lg transition duration-300 hover:scale-105 cursor-pointer">
               <Download size={18} />
               Download Resume
-            </button>
+            </button> */}
 
-            <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-3 text-white shadow-lg transition duration-300 hover:scale-105">
-              <Mail size={18} />
-              Get In Touch
-            </button>
+            <Link href="#contact">
+              <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-3 text-white shadow-lg transition duration-300 hover:scale-105 cursor-pointer">
+                <Mail size={18} />
+                Get In Touch
+              </button>
+            </Link>
 
           </div>
 

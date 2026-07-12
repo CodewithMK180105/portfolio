@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="mt-28 pb-24">
+    <section className="mt-28 pb-24" id="contact">
       <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
         Contact
       </span>
@@ -112,13 +112,13 @@ export default function Contact() {
               <FaLinkedin size={20} />
             </Link>
 
-            <Link
+            {/* <Link
               href="https://x.com"
               target="_blank"
               className="rounded-xl border border-zinc-200 bg-white p-3 transition hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
             >
               <FaXTwitter size={20} />
-            </Link>
+            </Link> */}
           </div>
         </div>
         {/* Contact Form */}

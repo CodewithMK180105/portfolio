@@ -38,7 +38,7 @@ export default function ImageCarousel({
                 alt={`Slide ${index + 1}`}
                 width={800}
                 height={600}
-                className={`w-full rounded-2xl ${contain ? "object-contain" : "object-cover aspect-[4/3]"}`}
+                className={`h-auto w-full rounded-2xl ${contain ? "object-contain" : "object-cover aspect-[4/3]"}`}
               />
             </div>
           ))}

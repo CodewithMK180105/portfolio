@@ -7,19 +7,20 @@ import {
   FaLinkedin,
   FaXTwitter,
 } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
   return (
     <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
       <div className="flex items-center gap-8 rounded-full border border-zinc-200/30 bg-white/60 px-8 py-4 backdrop-blur-xl shadow-xl dark:bg-zinc-900/60 dark:border-zinc-700/30">
-        <NavItem href="/">
+        <NavItem href="#home">
           <Home size={22} />
         </NavItem>
 
-        <NavItem href="/resume">
+        {/* <NavItem href="/resume">
           <FileText size={22} />
-        </NavItem>
+        </NavItem> */}
 
         <NavItem href="https://github.com/CodewithMK180105">
           <FaGithub size={20} />
@@ -27,6 +28,10 @@ export default function Navbar() {
 
         <NavItem href="https://www.linkedin.com/in/manishk-gupta/">
           <FaLinkedin size={20} />
+        </NavItem>
+        
+        <NavItem href="https://www.leetcode.com/u/CodewithMK180105/">
+          <SiLeetcode size={20} />
         </NavItem>
 
         {/* <NavItem href="https://x.com">
