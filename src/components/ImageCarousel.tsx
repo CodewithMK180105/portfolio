@@ -6,10 +6,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type ImageCarouselProps = {
   images: string[];
+  contain?: boolean;
 };
 
 export default function ImageCarousel({
   images,
+  contain,
 }: ImageCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -36,7 +38,7 @@ export default function ImageCarousel({
                 alt={`Slide ${index + 1}`}
                 width={800}
                 height={600}
-                className="aspect-[4/3] w-full rounded-2xl object-cover"
+                className={`w-full rounded-2xl ${contain ? "object-contain" : "object-cover aspect-[4/3]"}`}
               />
             </div>
           ))}

@@ -2,6 +2,7 @@ import Experience from "@/components/Experience";
 import Hackathons from "@/components/Hackathons";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/navbar";
+import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 
 export default function Home() {
@@ -91,9 +92,9 @@ export default function Home() {
       <main className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20">
         <Hero />
         <Experience />
+        <Projects />
         <Skills />
         <Hackathons />
-        {/* <Skills /> */}
         {/* <Contact /> */}
       </main>
     </div>

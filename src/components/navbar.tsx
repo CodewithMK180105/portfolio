@@ -29,9 +29,9 @@ export default function Navbar() {
           <FaLinkedin size={20} />
         </NavItem>
 
-        <NavItem href="https://x.com">
+        {/* <NavItem href="https://x.com">
           <FaXTwitter size={18} />
-        </NavItem>
+        </NavItem> */}
 
         <ThemeToggle />
       </div>
