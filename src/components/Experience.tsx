@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Experience() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   const experiences = [
     {
@@ -15,13 +15,16 @@ export default function Experience() {
     duration: "13 July 2026 - Present",
     logo: "/images/Quantiphi.png",
     points: [
-      
+      "Engineered Node.js backend integration services connecting frontend chat widgets with CX Agent Studio, optimizing webhook response payloads to remain within the 64 KiB limit while integrating Vertex AI Multimodal APIs.",
+      "Migrated enterprise conversational AI workflows from Dialogflow CX to CX Agent Studio, implementing 5 reporting use cases and custom intent-routing logic to support business requirements.",
+      "Designed and structured 5 BigQuery analytical tables and views to process streaming logs and power operational KPI dashboards using Looker Studio.",
+      "Developed automated email notification services supporting up to 2,000 emails per sender daily, implementing quota management and automatic failover across multiple service accounts."
     ],
   },
   {
     company: "TestKart",
     role: "Frontend Developer Intern",
-    duration: "7 Jan 2025 - 7 Apr 2025",
+    duration: "7 January 2025 - 7 April 2025",
     logo: "/images/testkart.png",
     points: [
       "Developed production-ready frontend features for TestKart, an EdTech marketplace, and Intro.ai, an interview management platform, using React and modern frontend practices.",
@@ -36,7 +39,7 @@ export default function Experience() {
   {
     company: "Zen Legal LLP",
     role: "Frontend Developer Intern",
-    duration: "24 Jun 2024 - 24 Oct 2024",
+    duration: "24 June 2024 - 24 October 2024",
     logo: "https://www.zenlegalgroup.com/images/header-logo.svg",
     points: [
       "Refactored the existing frontend codebase by removing redundant code and improving overall maintainability.",
@@ -50,7 +53,7 @@ export default function Experience() {
   {
     company: "Vighnotech",
     role: "Frontend Developer Intern",
-    duration: "04 Jun 2024 - 05 Sep 2024",
+    duration: "04 June 2024 - 05 September 2024",
     logo: "/images/vighnotech.webp",
     points: [
       "Improved the company's search engine visibility by implementing technical SEO, metadata optimization, and on-page SEO, significantly increasing its discoverability on Google.",
@@ -65,54 +68,67 @@ export default function Experience() {
 ];
 
   return (
-    <section className="">
-      <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
+    <motion.section
+      id="experience"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6 }}
+      className="mt-16 sm:mt-20 scroll-mt-24"
+    >
+      <span className="inline-block rounded-lg bg-orange-100 px-3 py-1 text-sm sm:text-base font-semibold text-orange-800 dark:bg-slate-800 dark:text-orange-400 shadow-2xs">
         Work Experience
       </span>
 
-      <div className="mt-8 space-y-6">
+      <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
         {experiences.map((exp, index) => {
           const isOpen = openIndex === index;
 
           return (
             <div
               key={exp.company}
-              className="overflow-hidden rounded-3xl border border-zinc-200/60 bg-white/40 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900/40"
+              className="overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/80 bg-white/70 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md hover:border-orange-300/70 dark:border-slate-800/80 dark:bg-slate-900/60 dark:hover:border-sky-500/30 dark:hover:shadow-sky-500/5"
             >
               <button
                 onClick={() =>
                   setOpenIndex(isOpen ? -1 : index)
                 }
-                className="flex w-full items-center justify-between p-8 text-left"
+                className="flex w-full items-center justify-between p-4 sm:p-6 md:p-7 text-left cursor-pointer transition-colors hover:bg-zinc-50/50 dark:hover:bg-slate-800/40"
               >
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={exp.logo}
-                    alt={exp.company}
-                    width={60}
-                    height={60}
-                    className="object-cover"
-                  />
+                <div className="flex items-center gap-3.5 sm:gap-5 min-w-0 flex-1">
+                  <div className="relative h-12 w-12 sm:h-14 sm:w-14 flex-shrink-0 overflow-hidden rounded-xl bg-white p-1 shadow-xs border border-zinc-200/80 dark:border-slate-700/60 dark:bg-slate-800">
+                    <Image
+                      src={exp.logo}
+                      alt={exp.company}
+                      height={90}
+                      width={90}
+                      className="object-contain p-1"
+                    />
+                  </div>
 
-                  <div>
-                    <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white">
+                  <div className="min-w-0 flex-1 pr-2">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-zinc-900 dark:text-slate-100 truncate">
                       {exp.company}
                     </h3>
 
-                    <p className="text-zinc-500 dark:text-zinc-400">
+                    <p className="text-xs sm:text-sm font-medium text-zinc-600 dark:text-slate-400 truncate">
                       {exp.role}
                     </p>
+
+                    <span className="mt-1 block text-xs text-zinc-500 dark:text-slate-500 md:hidden">
+                      {exp.duration}
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <span className="hidden text-zinc-500 md:block">
+                <div className="flex items-center gap-4 flex-shrink-0">
+                  <span className="hidden text-sm font-medium text-zinc-500 dark:text-slate-400 md:block">
                     {exp.duration}
                   </span>
 
                   <ChevronDown
-                    size={22}
-                    className={`transition-transform duration-300 ${
+                    size={20}
+                    className={`text-zinc-500 dark:text-slate-400 transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -136,12 +152,12 @@ export default function Experience() {
                     }}
                     className="overflow-hidden"
                   >
-                    <div className="border-t border-zinc-200/60 px-8 py-6 dark:border-zinc-800">
-                      <ul className="ml-[84px] list-disc space-y-3 text-zinc-600 dark:text-zinc-400">
+                    <div className="border-t border-zinc-200/70 p-4 sm:p-6 md:px-8 md:py-6 dark:border-slate-800/80">
+                      <ul className="pl-4 sm:pl-6 md:ml-14 md:pl-2 list-disc space-y-2.5 text-xs sm:text-sm md:text-base text-zinc-600 dark:text-slate-300">
                         {exp.points.map((point) => (
                           <li
                             key={point}
-                            className="leading-7"
+                            className="leading-relaxed sm:leading-relaxed"
                           >
                             {point}
                           </li>
@@ -155,6 +171,6 @@ export default function Experience() {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }

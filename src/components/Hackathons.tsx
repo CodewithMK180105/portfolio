@@ -6,13 +6,13 @@ import {
   CalendarDays,
   MapPin,
   Trophy,
-  ExternalLink,
   Presentation,
   Award,
   Globe,
   Play,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import ImageCarousel from "@/components/ImageCarousel";
 
 const hackathons = [
@@ -80,120 +80,125 @@ const hackathons = [
 
 export default function Hackathons() {
   return (
-    <section className="pb-8">
-      <span className="rounded-lg bg-orange-100 px-3 py-1 text-xl font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white">
-        Hackathons
+    <motion.section
+      id="achievements"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6 }}
+      className="mt-16 sm:mt-20 scroll-mt-24"
+    >
+      <span className="inline-block rounded-lg bg-orange-100 px-3 py-1 text-sm sm:text-base font-semibold text-orange-800 dark:bg-slate-800 dark:text-orange-400 shadow-2xs">
+        Achievements
       </span>
 
-      <div className="relative mt-10">
-        {/* Timeline */}
-        <div className="absolute left-8 top-0 h-full w-px bg-zinc-300 dark:bg-zinc-700" />
+      <div className="relative mt-6 sm:mt-8">
+        {/* Timeline line */}
+        <div className="absolute left-5 sm:left-7 top-0 h-full w-px bg-zinc-200 dark:bg-slate-800" />
 
-        <div className="space-y-6">
+        <div className="space-y-6 sm:space-y-8">
           {hackathons.map((hackathon) => (
             <div
               key={hackathon.title}
-              className="relative flex items-start gap-8"
+              className="relative flex items-start gap-3 sm:gap-6"
             >
               {/* Logo */}
               <div className="relative z-10 shrink-0">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+                <div className="flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-zinc-200/90 bg-white shadow-md transition-transform duration-300 hover:scale-110 dark:border-slate-700/80 dark:bg-slate-800 ring-4 ring-orange-500/10 dark:ring-sky-500/10">
                   <Image
                     src={hackathon.logo}
                     alt={hackathon.title}
-                    width={52}
-                    height={52}
-                    className="rounded-full object-contain"
+                    width={40}
+                    height={40}
+                    className="h-7 w-7 sm:h-10 sm:w-10 rounded-full object-contain"
                   />
                 </div>
               </div>
 
               {/* Card */}
-
               <div
                 className="
-                flex-1
-                overflow-hidden
-                rounded-3xl
-                border
-                border-zinc-200/60
-                bg-white/40
-                backdrop-blur-xl
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-xl
+                  flex-1
+                  overflow-hidden
+                  rounded-2xl
+                  sm:rounded-3xl
+                  border
+                  border-zinc-200/80
+                  bg-white/70
+                  backdrop-blur-xl
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1.5
+                  hover:shadow-xl
+                  hover:border-orange-300/80
 
-                dark:border-white/10
-                dark:bg-white/5
-              "
+                  dark:border-slate-800/80
+                  dark:bg-slate-900/60
+                  dark:hover:border-sky-500/40
+                  dark:hover:shadow-sky-500/10
+                "
               >
                 <div
                   className={
                     hackathon.images?.length
-                      ? "grid lg:grid-cols-[1fr_420px]"
+                      ? "grid grid-cols-1 lg:grid-cols-[1fr_380px]"
                       : "grid grid-cols-1"
                   }
                 >
                   {/* ================= LEFT ================= */}
-
-                  <div className="flex flex-col px-8 py-4">
+                  <div className="flex flex-col p-4 sm:p-6 md:p-7">
                     {/* Meta */}
-
-                    <div className="flex flex-wrap items-center gap-1 text-sm text-zinc-500">
-                      <div className="flex items-center gap-2">
-                        <CalendarDays size={15} />
-                        {hackathon.date}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1.5">
+                        <CalendarDays size={14} className="shrink-0" />
+                        <span>{hackathon.date}</span>
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <MapPin size={15} />
-                        {hackathon.location}
+                      <div className="flex items-center gap-1.5">
+                        <MapPin size={14} className="shrink-0" />
+                        <span>{hackathon.location}</span>
                       </div>
                     </div>
 
                     {/* Title */}
-
-                    <h3 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-white">
+                    <h3 className="mt-2 text-lg sm:text-xl md:text-2xl font-bold text-zinc-900 dark:text-slate-100">
                       {hackathon.title}
                     </h3>
 
                     {/* Achievement */}
-
-                    <div className="mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-orange-500/10 px-3 py-1.5 text-sm font-medium text-orange-600 dark:text-orange-400">
-                      <Trophy size={15} />
-                      {hackathon.achievement}
+                    <div className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-orange-500/10 px-3 py-1 text-xs sm:text-sm font-semibold text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">
+                      <Trophy size={14} className="shrink-0" />
+                      <span>{hackathon.achievement}</span>
                     </div>
 
                     {/* Description */}
-
-                    <p className="mt-2 text-[15px] leading-7 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-slate-300">
                       {hackathon.description}
                     </p>
 
                     {/* Buttons */}
-
-                    <div className="mt-2 flex flex-wrap gap-3">
-
+                    <div className="mt-5 flex flex-wrap gap-2 sm:gap-2.5">
                       {hackathon.links.event && (
                         <Link
                           href={hackathon.links.event}
                           target="_blank"
-                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
-                          >
-                          <Globe size={16} />
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-zinc-200/80 bg-white px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-zinc-700 shadow-xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 hover:scale-[1.03] active:scale-95 dark:border-slate-700/80 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
+                        >
+                          <Globe size={15} />
                           Event Page
                         </Link>
                       )}
-                      
+
                       {hackathon.links.github && (
                         <Link
                           href={hackathon.links.github}
                           target="_blank"
-                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-zinc-200/80 bg-white px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-zinc-700 shadow-xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 hover:scale-[1.03] active:scale-95 dark:border-slate-700/80 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
                         >
-                          <FaGithub size={16} />
+                          <FaGithub size={15} />
                           GitHub
                         </Link>
                       )}
@@ -203,9 +208,9 @@ export default function Hackathons() {
                           href={hackathon.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-zinc-200/80 bg-white px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-zinc-700 shadow-xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 hover:scale-[1.03] active:scale-95 dark:border-slate-700/80 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
                         >
-                          <Play size={16} />
+                          <Play size={14} className="fill-current" />
                           Demo
                         </Link>
                       )}
@@ -214,9 +219,10 @@ export default function Hackathons() {
                         <Link
                           href={hackathon.links.presentation}
                           target="_blank"
-                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-zinc-200/80 bg-white px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-zinc-700 shadow-xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 hover:scale-[1.03] active:scale-95 dark:border-slate-700/80 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
                         >
-                          <Presentation size={16} />
+                          <Presentation size={15} />
                           Presentation
                         </Link>
                       )}
@@ -225,9 +231,10 @@ export default function Hackathons() {
                         <Link
                           href={hackathon.links.certificate}
                           target="_blank"
-                          className="inline-flex items-center gap-2 rounded-xl border border-orange-300 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-orange-300/80 bg-orange-50/80 px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-orange-700 transition-all duration-200 hover:border-orange-400 hover:bg-orange-100 hover:scale-[1.03] active:scale-95 dark:border-orange-500/30 dark:bg-orange-950/40 dark:text-orange-300 dark:hover:bg-orange-900/50"
                         >
-                          <Award size={16} />
+                          <Award size={15} />
                           Certificate
                         </Link>
                       )}
@@ -235,9 +242,8 @@ export default function Hackathons() {
                   </div>
 
                   {/* ================= RIGHT ================= */}
-
                   {hackathon.images && (
-                    <div className="flex h-full items-center justify-center border-l border-zinc-200/60 px-6 py-6 dark:border-white/10">
+                    <div className="flex h-full items-center justify-center border-t lg:border-t-0 lg:border-l border-zinc-200/70 p-4 sm:p-6 dark:border-slate-800/80">
                       <div className="w-full max-w-md">
                         <ImageCarousel images={hackathon.images} />
                       </div>
@@ -249,6 +255,6 @@ export default function Hackathons() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

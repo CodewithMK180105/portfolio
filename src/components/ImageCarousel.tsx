@@ -7,11 +7,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 type ImageCarouselProps = {
   images: string[];
   contain?: boolean;
+  aspectRatio?: string;
 };
 
 export default function ImageCarousel({
   images,
   contain,
+  aspectRatio,
 }: ImageCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -20,6 +22,12 @@ export default function ImageCarousel({
   const scrollPrev = () => emblaApi?.scrollPrev();
   const scrollNext = () => emblaApi?.scrollNext();
 
+  const aspectClass = aspectRatio
+    ? aspectRatio
+    : contain
+      ? "aspect-[16/8]"
+      : "aspect-[4/3]";
+
   return (
     <div className="relative w-full">
       {/* Carousel */}
@@ -27,7 +35,7 @@ export default function ImageCarousel({
         ref={emblaRef}
         className="overflow-hidden rounded-2xl"
       >
-        <div className="flex">
+        <div className="flex items-start">
           {images.map((image, index) => (
             <div
               key={index}
@@ -36,9 +44,12 @@ export default function ImageCarousel({
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
-                width={800}
-                height={600}
-                className={`h-auto w-full rounded-2xl ${contain ? "object-contain" : "object-cover aspect-[4/3]"}`}
+                width={contain ? 1920 : 800}
+                height={contain ? 960 : 600}
+                priority={index === 0}
+                className={`w-full h-auto rounded-2xl ${aspectClass} ${
+                  contain ? "object-contain" : "object-cover"
+                }`}
               />
             </div>
           ))}
@@ -46,20 +57,26 @@ export default function ImageCarousel({
       </div>
 
       {/* Previous Button */}
-      <button
-        onClick={scrollPrev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md backdrop-blur transition hover:scale-105 dark:bg-zinc-900/80"
-      >
-        <ChevronLeft size={18} />
-      </button>
+      {images.length > 1 && (
+        <button
+          onClick={scrollPrev}
+          aria-label="Previous slide"
+          className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 sm:p-2 text-zinc-800 shadow-md backdrop-blur transition hover:scale-105 active:scale-95 dark:border dark:border-slate-700/60 dark:bg-slate-900/80 dark:text-slate-200 cursor-pointer z-10"
+        >
+          <ChevronLeft size={18} />
+        </button>
+      )}
 
       {/* Next Button */}
-      <button
-        onClick={scrollNext}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md backdrop-blur transition hover:scale-105 dark:bg-zinc-900/80"
-      >
-        <ChevronRight size={18} />
-      </button>
+      {images.length > 1 && (
+        <button
+          onClick={scrollNext}
+          aria-label="Next slide"
+          className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 sm:p-2 text-zinc-800 shadow-md backdrop-blur transition hover:scale-105 active:scale-95 dark:border dark:border-slate-700/60 dark:bg-slate-900/80 dark:text-slate-200 cursor-pointer z-10"
+        >
+          <ChevronRight size={18} />
+        </button>
+      )}
     </div>
   );
 }
